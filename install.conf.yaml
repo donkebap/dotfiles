@@ -7,9 +7,13 @@
 - link:
     ~/.gitignore_global: .gitignore_global
     ~/.gitconfig: .gitconfig
-    ~/.zshrc: .zshrc
+    ~/.zshrc:
+      force: true
+      path: .zshrc
     ~/.emacs.d: .emacs.d
-    ~/.i3: .i3
+    ~/.i3:
+      force: true
+      path: .i3
 - shell:
     -
       - "git submodule update --init --recursive"
