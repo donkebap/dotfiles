@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/semih/.oh-my-zsh
+  export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -88,5 +88,3 @@ alias ew="emacsclient -c -n"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias i3conf="$EDITOR ~/.i3/config"
 alias i3bconf="$EDITOR ~/.i3/i3blocks.conf"
-
-eval $(thefuck --alias)

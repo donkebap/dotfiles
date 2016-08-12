@@ -6,6 +6,11 @@
 - clean: ['~']
 - link:
     ~/.gitignore_global: .gitignore_global
+    ~/.gitconfig: .gitconfig
     ~/.zshrc: .zshrc
     ~/.emacs.d: .emacs.d
     ~/.i3: .i3
+- shell:
+    -
+      - "git submodule update --init --recursive"
+      - "Installing/updating submodules"
