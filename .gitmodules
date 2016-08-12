@@ -1,0 +1,9 @@
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+[submodule ".emacs.d"]
+	path = .emacs.d
+	url = https://github.com/donkebap/.emacs.d.git
+[submodule ".i3"]
+	path = .i3
+	url = https://github.com/donkebap/.i3.git

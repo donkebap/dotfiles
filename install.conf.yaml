@@ -1,0 +1,11 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~']
+- link:
+    ~/.gitignore_global: .gitignore_global
+    ~/.zshrc: .zshrc
+    ~/.emacs.d: .emacs.d
+    ~/.i3: .i3
