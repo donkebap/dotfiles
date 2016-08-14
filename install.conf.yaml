@@ -10,6 +10,10 @@
     ~/.zshrc:
       force: true
       path: .zshrc
+    ~/.zshenv: .zshenv
+    ~/.zprofile:
+      force: true
+      path: .zprofile
     ~/.emacs.d: .emacs.d
     ~/.i3:
       force: true
