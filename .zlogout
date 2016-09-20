@@ -1,6 +1,4 @@
-# Print the message.
 cat <<-EOF
 
-Thank you. Come again!
-  -- Dr. Apu Nahasapeemapetilon
+Logging out.
 EOF

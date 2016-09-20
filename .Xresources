@@ -1,6 +1,9 @@
-URxvt.font: xft:DejaVu\ Sans\ Mono\ for\ Powerline:size=10
+URxvt.font: xft:DejaVu\ Sans\ Mono\ for\ Powerline:style=Book:size=10
+URxvt.boldFont: xft:DejaVu\ Sans\ Mono\ for\ Powerline:style=Bold:size=10
 URxvt.letterSpace: -1
 
+URxvt*termName: rxvt-unicode-256color
+URxvt.scrollBar: false
 URxvt.intensityStyles: false
 
 #define S_base03        #002b36
