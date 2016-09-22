@@ -22,10 +22,10 @@
     ~/.Xresources: .Xresources
     ~/.gitignore_global: .gitignore_global
     ~/.gitconfig: .gitconfig
-    ~/.emacs.d: .emacs.d
+    ~/.emacs.d: emacsd
     ~/.i3:
       force: true
-      path: .i3
+      path: i3
     ~/.foobar2000/configuration/foo_ui_columns.dll.cfg: .foobar2000/configuration/foo_ui_columns.dll.cfg
     ~/.config/pulse/presets/MySoftRock.preset: .config/pulse/presets/MySoftRock.preset
     ~/.config/mpv: .config/mpv
