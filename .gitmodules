@@ -1,18 +1,12 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule ".emacs.d"]
-	path = .emacs.d
-	url = https://github.com/donkebap/.emacs.d.git
-[submodule ".i3"]
-	path = .i3
-	url = https://github.com/donkebap/.i3.git
 [submodule "prezto"]
 	path = prezto
 	url = https://github.com/sorin-ionescu/prezto.git
 [submodule "i3"]
 	path = i3
-	url = https://gitlab.com/donkebap/i3.git
+	url = https://github.com/donkebap/i3.git
 [submodule "emacsd"]
 	path = emacsd
-	url = https://gitlab.com/donkebap/emacsd.git
+	url = https://github.com/donkebap/emacsd.git
