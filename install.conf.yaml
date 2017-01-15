@@ -30,6 +30,8 @@
     ~/.config/pulse/presets/MySoftRock.preset: .config/pulse/presets/MySoftRock.preset
     ~/.config/mpv: .config/mpv
     ~/.npmrc: .npmrc
+    ~/.config/base16-shell: base16-shell
+
 - shell:
     -
       - "git submodule update --init --recursive"
