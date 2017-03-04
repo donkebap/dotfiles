@@ -1,5 +1,7 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-setxkbmap -option caps:swapescape
+setxkbmap -option ctrl:nocaps
 
-exec i3
+compton --config ~/.config/compton.conf -b
+
+exec awesome
