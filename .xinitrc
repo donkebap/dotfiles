@@ -2,6 +2,6 @@
 
 setxkbmap -option ctrl:nocaps
 
-compton --config ~/.config/compton.conf -b
+#compton --config ~/.config/compton.conf -b
 
 exec awesome
