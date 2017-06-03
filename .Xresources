@@ -1,5 +1,5 @@
-URxvt*font: xft:DejaVu Sans Mono for Powerline:style=Book:size=11
-URxvt*boldFont: xft:DejaVu Sans Mono for Powerline:style=Bold:size=11
+URxvt*font: xft:Hack:Regular:size=11
+URxvt*boldFont: xft:Hack:style=Bold:size=11
 URxvt.letterSpace: -1
 URxvt*termName: rxvt-unicode-256color
 URxvt.scrollBar: false
