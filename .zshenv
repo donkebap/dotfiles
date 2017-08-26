@@ -11,8 +11,13 @@ fi
 
 if [ -d "${HOME}/.npm-packages" ] ; then
     NPM_PACKAGES="$HOME/.npm-packages"
-    export PATH="$NPM_PACKAGES:$PATH"
+    export PATH="$NPM_PACKAGES/bin:$PATH"
     # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
     unset MANPATH # delete if you already modified MANPATH elsewhere in your config
     export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 fi
+
+RANGER_LOAD_DEFAULT_RC=FALSE
+
+export PATH="/usr/lib/ccache/bin/:$PATH"
+export MAKEFLAGS="-j5 -l4"
