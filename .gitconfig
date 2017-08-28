@@ -1,6 +1,7 @@
 [user]
 	email = semih.helvaci92@gmail.com
 	name = Semih Helvaci
+	signingkey = 6D48A4301126191A
 [core]
 	excludesfile = /home/semih/.gitignore_global
 	autocrlf = input

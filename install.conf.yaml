@@ -33,6 +33,8 @@
     ~/.config/compton.conf: .config/compton.conf
     ~/.config/awesome: awesome
     ~/.tmux.conf: .tmux.conf
+    ~/.pam_environment: .pam_environment
+    ~/.ssh/config: .ssh/config
 - shell:
     -
       - "git submodule update --init --recursive"
