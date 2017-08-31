@@ -35,6 +35,9 @@
     ~/.tmux.conf: .tmux.conf
     ~/.pam_environment: .pam_environment
     ~/.ssh/config: .ssh/config
+    ~/.config/mpd/mpd.conf: .config/mpd/mpd.conf
+    ~/.config/mpd/playlists: .config/mpd/playlists
+    ~/.ncmpcpp/config: .ncmpcpp/config
 - shell:
     -
       - "git submodule update --init --recursive"

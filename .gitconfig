@@ -5,3 +5,5 @@
 [core]
 	excludesfile = /home/semih/.gitignore_global
 	autocrlf = input
+[commit]
+	gpgsign = true
