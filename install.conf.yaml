@@ -38,6 +38,7 @@
     ~/.config/mpd/mpd.conf: .config/mpd/mpd.conf
     ~/.config/mpd/playlists: .config/mpd/playlists
     ~/.ncmpcpp/config: .ncmpcpp/config
+    ~/.config/dunst/dunstrc: .config/dunst/dunstrc
 - shell:
     -
       - "git submodule update --init --recursive"
