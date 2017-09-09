@@ -4,4 +4,5 @@ setxkbmap -option ctrl:nocaps
 
 #compton --config ~/.config/compton.conf -b
 
-exec awesome
+systemctl --user import-environment DISPLAY
+exec i3
