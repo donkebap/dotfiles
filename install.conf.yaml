@@ -39,6 +39,11 @@
     ~/.config/mpd/playlists: .config/mpd/playlists
     ~/.ncmpcpp/config: .ncmpcpp/config
     ~/.config/dunst/dunstrc: .config/dunst/dunstrc
+    ~/.config/ranger/commands_full.py: .config/ranger/commands_full.py
+    ~/.config/ranger/commands.py: .config/ranger/commands.py
+    ~/.config/ranger/rc.conf: .config/ranger/rc.conf
+    ~/.config/ranger/rifle.conf: .config/ranger/rifle.conf
+    ~/.config/ranger/scope.sh: .config/ranger/scope.sh
 - shell:
     -
       - "git submodule update --init --recursive"
