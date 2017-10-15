@@ -21,3 +21,8 @@ RANGER_LOAD_DEFAULT_RC=FALSE
 
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export MAKEFLAGS="-j5 -l4"
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true'
+# -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+
+export GTK_THEME="Arc"
+export GTK2_RC_FILES="/usr/share/themes/Arc/gtk-2.0/gtkrc"
