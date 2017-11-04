@@ -15,7 +15,6 @@
       force: true
       path: .zshrc
     ~/.zpreztorc: .zpreztorc
-    ~/.zprezto: prezto
     ~/.xinitrc:
       force: true
       path: .xinitrc

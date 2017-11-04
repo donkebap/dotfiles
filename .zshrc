@@ -7,7 +7,6 @@ antigen bundles <<EOBUNDLES
 	sorin-ionescu/prezto modules/autosuggestions
 	sorin-ionescu/prezto modules/history-substring-search
 	sorin-ionescu/prezto modules/git
-	sorin-ionescu/prezto modules/syntax-highlighting
 	sorin-ionescu/prezto modules/prompt
 EOBUNDLES
 antigen apply
