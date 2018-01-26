@@ -23,7 +23,7 @@ export PAGER='less'
 #
 
 if [[ -z "$LANG" ]]; then
-  export LANG='en_US.UTF-8'
+  export LANG='de_DE.UTF-8'
 fi
 
 #
@@ -70,5 +70,3 @@ fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
 
-[[ -z $DISPLAY &&  $XDG_VTNR -eq 1 ]] && exec startx
-#[[ -z $DISPLAY &&  $XDG_VTNR -eq 1 ]] && exec sway
