@@ -23,7 +23,7 @@ export PAGER='less'
 #
 
 if [[ -z "$LANG" ]]; then
-  export LANG='de_DE.UTF-8'
+  export LANG='en_US.UTF-8'
 fi
 
 #
