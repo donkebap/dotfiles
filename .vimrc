@@ -10,6 +10,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdcommenter'
 
 "Interaction with tmux
 Plug 'benmills/vimux'
@@ -30,6 +31,9 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'jtdowney/vimux-cargo'
+Plug 'milkypostman/vim-togglelist'
+Plug 'neomake/neomake', { 'for': ['rust'] }
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 
@@ -48,6 +52,15 @@ nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
+" Rust key bindings
+map <Leader>rc :wa<CR> :CargoRun<CR>
+map <Leader>ra :wa<CR> :CargoTestAll<CR>
+map <Leader>rb :wa<CR> :CargoUnitTestCurrentFile<CR>
+map <Leader>rf :wa<CR> :CargoUnitTestFocused<CR>
+
+" Open toggle list automatically
+let g:neomake_open_list = 2
+autocmd! BufWritePost,BufEnter *.rs Neomake
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -204,10 +217,10 @@ endfunction
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+"map <C-j> <C-W>j
+"map <C-k> <C-W>k
+"map <C-h> <C-W>h
+"map <C-l> <C-W>l
 
 
 """"""""""""""""""""""""""""""
