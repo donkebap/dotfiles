@@ -23,7 +23,7 @@
     ~/.gitconfig: .gitconfig
     ~/.emacs.d: emacsd
     ~/.vimrc: .vimrc
-    ~/.i3:
+    ~/.config/i3:
       force: true
       path: i3
     ~/.foobar2000/configuration/foo_ui_columns.dll.cfg: .foobar2000/configuration/foo_ui_columns.dll.cfg

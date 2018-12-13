@@ -14,17 +14,17 @@ fi
 # Editors
 #
 
-export EDITOR='emacsclient -nw'
-export VISUAL='emacsclient -nw'
+export EDITOR='emacsclient -t --socket-name /tmp/emacs1000/server'
+export VISUAL='emacsclient -c -a emacs'
 export PAGER='less'
 
 #
 # Language
 #
 
-if [[ -z "$LANG" ]]; then
-  export LANG='en_US.UTF-8'
-fi
+#if [[ -z "$LANG" ]]; then
+#  export LANG='en_US.UTF-8'
+#fi
 
 #
 # Paths
@@ -70,3 +70,10 @@ fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
 
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
+
+# if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+#  XKB_DEFAULT_LAYOUT=de exec sway
+# fi

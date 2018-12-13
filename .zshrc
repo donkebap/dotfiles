@@ -4,7 +4,6 @@ antigen bundles <<EOBUNDLES
 	sorin-ionescu/prezto modules/helper
 	sorin-ionescu/prezto modules/editor
 	sorin-ionescu/prezto modules/command-not-found
-	sorin-ionescu/prezto modules/autosuggestions
 	sorin-ionescu/prezto modules/history-substring-search
 	sorin-ionescu/prezto modules/git
 	sorin-ionescu/prezto modules/prompt
@@ -16,5 +15,5 @@ alias ew="emacsclient -n -c"
 alias zshconfig="$EDITOR ~/.zshrc"
 alias i3conf="$EDITOR ~/.i3/config"
 alias i3bconf="$EDITOR ~/.i3/i3blocks.conf"
-alias l="ls -lah"
-alias le="exa -la"
+alias l="exa -lah"
+alias ls="exa"

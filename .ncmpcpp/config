@@ -25,7 +25,7 @@ mpd_port = 6600
 #
 ## Needed for tag editor and file operations to work.
 ##
-mpd_music_dir = /mnt/Daten/Semih/Musik/Sounds
+mpd_music_dir = /home/semih/Music
 #
 #mpd_crossfade_time = 5
 #

@@ -3,3 +3,5 @@
 setxkbmap -option ctrl:nocaps
 
 systemctl --user import-environment DISPLAY
+
+exec i3

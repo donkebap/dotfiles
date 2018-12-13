@@ -1,5 +1,5 @@
-URxvt*font: xft:Hack:Regular:size=12
-URxvt*boldFont: xft:Hack:style=Bold:size=12
+URxvt*font: xft:Iosevka:style=Medium:size=14
+URxvt*boldFont: xft:Iosevka:style=Bold:size=14
 URxvt.letterSpace: -1
 URxvt*termName: rxvt-unicode-256color
 URxvt.scrollBar: false
