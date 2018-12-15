@@ -15,7 +15,7 @@ fi
 #
 
 export EDITOR='emacsclient -t --socket-name /tmp/emacs1000/server'
-export VISUAL='emacsclient -c -a emacs'
+export VISUAL='emacsclient -n -c --socket-name /tmp/emacs1000/server -a emacs'
 export PAGER='less'
 
 #

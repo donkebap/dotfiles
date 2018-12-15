@@ -11,9 +11,9 @@ EOBUNDLES
 antigen apply
 
 alias e="$EDITOR"
-alias ew="emacsclient -n -c"
-alias zshconfig="$EDITOR ~/.zshrc"
-alias i3conf="$EDITOR ~/.i3/config"
-alias i3bconf="$EDITOR ~/.i3/i3blocks.conf"
-alias l="exa -lah"
+alias ew="$VISUAL"
+alias zshconfig="ew ~/.zshrc"
+alias i3conf="ew ~/.i3/config"
+alias i3bconf="ew ~/.i3/i3blocks.conf"
+alias l="exa -lgah"
 alias ls="exa"
