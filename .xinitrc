@@ -1,6 +1,6 @@
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
-setxkbmap -option ctrl:nocaps
+setxkbmap -option ctrl:escape
 
 systemctl --user import-environment DISPLAY
 

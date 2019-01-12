@@ -23,6 +23,7 @@
     ~/.gitconfig: .gitconfig
     ~/.emacs.d: emacsd
     ~/.vimrc: .vimrc
+    ~/.vimrc.bundles: .vimrc.bundles
     ~/.config/i3:
       force: true
       path: i3

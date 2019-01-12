@@ -1,278 +1,625 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.vim/plugged')
+" General settings {{{
+set nocompatible
+syntax on
+filetype plugin indent on
+" }}}
 
-Plug 'tpope/vim-fugitive'
+"  Behavior Modification ----------------------  {{{
 
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-surround'
-Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
-
-"Interaction with tmux
-Plug 'benmills/vimux'
-Plug 'christoomey/vim-tmux-navigator'
-
-"""""""""""
-"TypeScript
-"""""""""""
-" Autocomplete
-Plug 'Quramy/tsuquyomi'
-"Syntax checker
-"Automatically indents unless disabled
-Plug 'leafgarland/typescript-vim'
-
-" Rust
-Plug 'rust-lang/rust.vim'
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'jtdowney/vimux-cargo'
-Plug 'milkypostman/vim-togglelist'
-Plug 'neomake/neomake', { 'for': ['rust'] }
-
-Plug 'octol/vim-cpp-enhanced-highlight'
-
-call plug#end()
-
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-autocmd BufReadPost fugitive://* set bufhidden=delete
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-
-" Allow moving around between Tmux windows
-let g:tmux_navigator_no_mappings = 1
-let g:tmux_navigator_save_on_switch = 1
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-
-" Rust key bindings
-map <Leader>rc :wa<CR> :CargoRun<CR>
-map <Leader>ra :wa<CR> :CargoTestAll<CR>
-map <Leader>rb :wa<CR> :CargoUnitTestCurrentFile<CR>
-map <Leader>rf :wa<CR> :CargoUnitTestFocused<CR>
-
-" Open toggle list automatically
-let g:neomake_open_list = 2
-autocmd! BufWritePost,BufEnter *.rs Neomake
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history VIM has to remember
-set history=500
-
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
-
-" Set to auto read when a file is changed from the outside
-set autoread
-
-" Fast saving
-nmap <leader>w :w!<cr>
-
-" :W sudo saves the file
-" (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
-
-" Turn on the Wild menu
-set wildmenu
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
-else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-endif
-
-"Always show current position
+" set backspace=2       " Backspace deletes like most programs in insert mode
+set history=200
 set ruler
-
-" Height of the command bar
-set cmdheight=2
-
-" A buffer becomes hidden when it is abandoned
-set hid
-
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
+set showcmd
 set incsearch
+set laststatus=2
+set ignorecase
+set smartcase
+set magic
+set noshowmode
+set foldmethod=manual
+set mouse=a
+set iskeyword+=-
 
-" Don't redraw while executing macros (good performance config)
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set shiftround
+set termguicolors
+set hidden
+
+set textwidth=80
+set nowrap
+
+set ttyfast
 set lazyredraw
 
-" For regular expressions turn magic on
-set magic
+set visualbell
 
-" Show matching brackets when text indicator is over them
-set showmatch
-" How many tenths of a second to blink when matching brackets
-set mat=2
+" wildmenu
+set wildmenu
+set wildmode=list:longest,list:full
 
-" No annoying sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
+" Line numbers
+set number
+set numberwidth=1
 
-"Toggle relative numbering, and set to absolute on loss of focus or insert mode
-set rnu
-function! ToggleNumbersOn()
-	set nu!
-	set rnu
-endfunction
-function! ToggleRelativeOn()
-	set rnu!
-	set nu
-endfunction
-autocmd FocusLost * call ToggleRelativeOn()
-autocmd FocusGained * call ToggleRelativeOn()
-autocmd InsertEnter * call ToggleRelativeOn()
-autocmd InsertLeave * call ToggleRelativeOn()
+" undo/backup files
+set backupdir=~/.vim/tmp,.
+set directory=~/.vim/tmp,.
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax enable
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
-set nobackup
-set nowb
-set noswapfile
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Be smart when using tabs ;)
-set smarttab
-
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
-
-" Linebreak on 500 characters
-set lbr
-set tw=500
-
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
-
-" Strip trailing whitespace on save
-if has("autocmd")
-	autocmd BufWritePre *.js,*.rs,*.scala,*.java,*.css,*,.html,*.cpp :call <SID>StripTrailingWhitespaces()
+" persistent undo
+if has('persistent_undo')
+    set undofile
+    set undodir=~/.vim/tmp,.
 endif
 
-function! <SID>StripTrailingWhitespaces()
-	" Preparation: save last search, and cursor position.
-	let _s=@/
-	let l = line(".")
-	let c = col(".")
-	%s/\s\+$//e
-	let @/=_s
-	call cursor(l, c)
+" Open new split panes to right and bottom
+set splitbelow
+set splitright
+
+" Always use vertical diffs
+set diffopt+=vertical
+
+" highlight fenced code blocks in markdown
+let g:markdown_fenced_languages = [
+            \ 'html',
+            \ 'vim',
+            \ 'js=javascript',
+            \ 'json',
+            \ 'python',
+            \ 'sql',
+            \ 'bash=sh'
+            \ ]
+
+" enable folding in bash files
+let g:sh_fold_enabled=1
+" }}}
+
+"  Plugin Modifications (BEFORE loading bundles) ----- {{{
+
+" ====================================
+" VimMatchUp:
+" ====================================
+let g:matchup_matchparen_deferred = 1
+
+" ====================================
+" WinResizer:
+" ====================================
+nnoremap <C-w>r :WinResizerStartResize<CR>
+
+" ====================================
+" UndoTree:
+" ===================================
+nnoremap <silent> <leader>ut :UndotreeToggle<CR>
+
+" ====================================
+" Deoplete:
+" ====================================
+
+let g:deoplete#enable_at_startup = 1
+inoremap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ deoplete#mappings#manual_complete()
+
+function! s:check_back_space() abort
+    let l:col = col('.') - 1
+    return !l:col || getline('.')[l:col - 1]  =~? '\s'
 endfunction
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
 
-" Smart way to move between windows
-"map <C-j> <C-W>j
-"map <C-k> <C-W>k
-"map <C-h> <C-W>h
-"map <C-l> <C-W>l
+let g:deoplete#omni#input_patterns = {}
+let g:deoplete#omni#input_patterns.css               = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
+let g:deoplete#omni#input_patterns.scss              = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
+let g:deoplete#omni#input_patterns['javascript.jsx'] = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
+
+" ====================================
+" Vim multiple cursors + DEOPLETE:
+" ====================================
+augroup VimMultiCursors
+    autocmd!
+    autocmd User MultipleCursorsPre let g:deoplete#disable_auto_complete=1
+    autocmd User MultipleCursorsPost let g:deoplete#disable_auto_complete=0
+augroup END
 
 
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
+" ====================================
+" Neosnippet:
+" ====================================
 
-""""""""""""""""""""""""""""""
-" Programming
-""""""""""""""""""""""""""""""
-if executable('rls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'rls',
-        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-        \ 'whitelist': ['rust'],
-        \ })
+let g:neosnippet#enable_completed_snippet = 1
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ neosnippet#expandable_or_jumpable() ?
+            \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+            \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+
+" ====================================
+" LanguageClient-neovim:
+" ====================================
+let g:LanguageClient_serverCommands = {
+            \ 'rust': ['rls'],
+            \ 'javascript.jsx': ['javascript-typescript-stdio'],
+            \ }
+
+let g:LanguageClient_hasSnippetSupport = 0
+
+nnoremap <leader>; :call LanguageClient_contextMenu()<CR>
+
+" ====================================
+" GitGutter:
+" ====================================
+nnoremap <silent> + :GitGutterNextHunk<cr>
+nnoremap <silent> _ :GitGutterPrevHunk<cr>
+
+" ====================================
+" SplitJoin:
+" ====================================
+let g:splitjoin_align = 1
+let g:splitjoin_trailing_comma = 1
+
+" ====================================
+" MatchTagAlways:
+" ====================================
+let g:mta_filetypes = {
+            \ 'xhtml': 1,
+            \ 'xml': 1,
+            \ 'html': 1,
+            \ 'javascript.jsx': 1,
+            \ }
+
+" ====================================
+" Snippets (UltiSnips):
+" ====================================
+let g:UltiSnipsExpandTrigger="<NUL>"
+let g:UltiSnipsListSnippets="<NUL>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" :UltiSnipsEdit opens in a vertical split
+let g:UltiSnipsEditSplit                   = 'vertical'
+let g:UltiSnipsSnippetsDir                 = $HOME . '/dotfiles/vim/UltiSnips'
+
+" ====================================
+" indentLine
+" ====================================
+let g:indentLine_fileType = [
+            \ 'java',
+            \ 'javascript',
+            \ 'javascript.jsx',
+            \ 'html',
+            \ 'vim'
+            \ ]
+
+let g:indentLine_char = '│'
+let g:indentLine_color_term = 238
+let g:indentLine_color_gui = '#454C5A'
+
+" ====================================
+" setup airline
+" ====================================
+let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_mode_map = {
+            \ '__' : '-',
+            \ 'n'  : 'N',
+            \ 'i'  : 'I',
+            \ 'R'  : 'R',
+            \ 'c'  : 'C',
+            \ 'v'  : 'V',
+            \ 'V'  : 'V',
+            \ '' : 'V',
+            \ 's'  : 'S',
+            \ 'S'  : 'S',
+            \ '' : 'S',
+            \ }
+
+" ====================================
+" Bullets.vim:
+" ====================================
+let g:bullets_enabled_file_types = [
+            \ 'markdown',
+            \ 'text',
+            \ 'gitcommit',
+            \ 'scratch'
+            \]
+
+" =====================================
+"  FZF
+" =====================================
+" set fzf's default input to ripgrep instead of find. This also removes gitignore etc
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden'
+let $FZF_DEFAULT_OPTS='--ansi'
+let g:fzf_files_options = '--preview "(bat --color \"always\" --line-range 0:100 {} || head -'.&lines.' {})"'
+
+function! FZFOpen(command_str)
+    if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
+        exe "normal! \<c-w>\<c-w>"
+    endif
+    exe 'normal! ' . a:command_str . "\<cr>"
+endfunction
+
+command! -bang -nargs=* FzfRg
+            \ call fzf#vim#grep(
+            \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+            \   <bang>0 ? fzf#vim#with_preview('up:60%')
+            \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+            \   <bang>0)
+
+nnoremap <silent> <C-b> :call FZFOpen(':Buffers')<CR>
+nnoremap <silent> <C-g>g :call FZFOpen(':FzfRg!')<CR>
+nnoremap <silent> <C-g>c :call FZFOpen(':Commands')<CR>
+nnoremap <silent> <C-g>l :call FZFOpen(':BLines')<CR>
+nnoremap <silent> <C-p> :call FZFOpen(':Files')<CR>
+nnoremap <silent> <C-h> :call FZFOpen(':History')<CR>
+
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" ======================================
+" FZF + DevIcons
+" ======================================
+
+" Files + devicons
+function! Fzf_dev()
+    let l:fzf_files_options = '--preview "rougify {2..-1} | head -'.&lines.'"'
+
+    function! s:files()
+        let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
+        return s:prepend_icon(l:files)
+    endfunction
+
+    function! s:prepend_icon(candidates)
+        let l:result = []
+        for l:candidate in a:candidates
+            let l:filename = fnamemodify(l:candidate, ':p:t')
+            let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
+            call add(l:result, printf('%s %s', l:icon, l:candidate))
+        endfor
+
+        return l:result
+    endfunction
+
+    function! s:edit_file(item)
+        let l:pos = stridx(a:item, ' ')
+        let l:file_path = a:item[pos+1:-1]
+        " TODO: not working
+        let l:cmd = get({
+                    \ 'ctrl-x': 'split',
+                    \ 'ctrl-v': 'vertical split',
+                    \ 'ctrl-t': 'tabe'
+                    \ }, a:item[0], 'e')
+        execute 'silent ' . l:cmd . ' ' . l:file_path
+    endfunction
+
+    call fzf#run({
+                \ 'source': <sid>files(),
+                \ 'sink':   function('s:edit_file'),
+                \ 'options': '-m --expect=ctrl-t,ctrl-v,ctrl-x '.
+                \            l:fzf_files_options,
+                \ 'down':    '40%' })
+endfunction
+
+
+" =====================================
+"  JSX
+" =====================================
+
+" Allow JSX in normal JS files
+let g:jsx_ext_required = 0
+
+" ----------------------------------------------------------------------------
+" Scratch.vim
+" ----------------------------------------------------------------------------
+let g:scratch_no_mappings=1
+
+nnoremap <leader>sc :Scratch<CR>
+
+augroup ScratchToggle
+    autocmd!
+    autocmd FileType scratch nnoremap <buffer> <leader>sc :q<CR>
+augroup END
+
+" ----------------------------------------------------------------------------
+" Emmet
+" ----------------------------------------------------------------------------
+" better emmet leader key (must be followed with ,)
+let g:user_emmet_leader_key='<C-e>'
+
+" ----------------------------------------------------------------------------
+" Switch.vim
+" ----------------------------------------------------------------------------
+let g:switch_custom_definitions =
+            \ [
+            \   ['up', 'down', 'change'],
+            \   ['add', 'drop', 'remove'],
+            \   ['create', 'drop'],
+            \   ['row', 'column'],
+            \   ['first', 'second', 'third', 'fourth', 'fifth'],
+            \ ]
+
+
+" ----------------------------------------------------------------------------
+" Vim Flow JS
+" ----------------------------------------------------------------------------
+let g:flow#autoclose = 1
+
+" ----------------------------------------------------------------------------
+" ALE
+" ----------------------------------------------------------------------------
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''
+highlight link ALEWarningSign Directory
+highlight link ALEErrorSign WarningMsg
+nnoremap <silent> <leader>ne :ALENextWrap<CR>
+nnoremap <silent> <leader>pe :ALEPreviousWrap<CR>
+
+let g:ale_fixers = {
+            \   'javascript': ['prettier'],
+            \   'javascript.jsx': ['prettier'],
+            \   'json': ['prettier'],
+            \   'scss': ['prettier'],
+            \   'bash': ['shfmt'],
+            \   'zsh': ['shfmt'],
+            \   'rust': ['rustfmt'],
+            \}
+
+let g:ale_sh_shfmt_options = '-i 2 -ci'
+
+let g:ale_fix_on_save = 1
+
+" ----------------------------------------------------------------------------
+" Startify
+" ----------------------------------------------------------------------------
+let g:startify_files_number = 5
+
+" ----------------------------------------------------------------------------
+" NERDTree
+" ----------------------------------------------------------------------------
+let g:NERDTreeIgnore = [
+            \ '\.vim$',
+            \ '\~$',
+            \ 'deps',
+            \ '_build',
+            \ '.git',
+            \ 'node_modules',
+            \ 'tags',
+            \ ]
+
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeAutoDeleteBuffer=1
+" keep alternate files and jumps
+let g:NERDTreeCreatePrefix='silent keepalt keepjumps'
+
+nnoremap <Leader>nt :NERDTreeToggle<CR>
+
+" not necessarily NTree related but uses NERDTree because I have it setup
+nnoremap <leader>d :e %:h<CR>
+
+augroup NERDTreeAuCmds
+    autocmd!
+    autocmd FileType nerdtree nmap <buffer> <expr> - g:NERDTreeMapUpdir
+augroup END
+" move up a directory with "-" like using vim-vinegar (usually "u" does that)
+
+" ----------------------------------------------------------------------------
+" WebDevIcons
+" ----------------------------------------------------------------------------
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:webdevicons_enable_airline_statusline = 1
+let g:webdevicons_enable_airline_tabline = 1
+let g:WebDevIconsOS = 'Unix'
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {}
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['js'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['jsx'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vim'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['md'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['yaml'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['yml'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['svg'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['json'] = ''
+
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols = {} " needed
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.*vimrc.*'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['.keep'] = ''
+let g:WebDevIconsUnicodeDecorateFileNodesPatternSymbols['package.json'] = ''
+
+" Useful alternatives:           
+
+" after a re-source, fix syntax matching issues (concealing brackets):
+if exists('g:loaded_webdevicons')
+    call webdevicons#refresh()
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
-map 0 ^
+" ----------------------------------------------------------------------------
+"  vim-nerdtree-syntax-highlight:
+" ----------------------------------------------------------------------------
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let g:NERDTreeExtensionHighlightColor = {}
+let g:NERDTreeExtensionHighlightColor['yml'] = 'f4bf70'
+let g:NERDTreeExtensionHighlightColor['yaml'] = 'f4bf70'
 
-" Move a line of text using ALT+[jk] or Command+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-" Delete trailing white space on save, useful for some filetypes ;)
-fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    silent! %s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfun
+" ----------------------------------------------------------------------------
+" vim-go
+" ----------------------------------------------------------------------------
+augroup CustomGoVimMappings
+    autocmd!
+    autocmd FileType go setlocal nolist listchars=tab:>-,trail:·,nbsp:·
+    autocmd FileType go nmap <buffer> <leader>r <Plug>(go-run)
+    autocmd FileType go nmap <buffer> <leader>b <Plug>(go-build)
+    autocmd FileType go nmap <buffer> <leader>t <Plug>(go-test)
+    autocmd FileType go nmap <buffer> <leader>c <Plug>(go-coverage)
+    autocmd Filetype go
+                \  command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+                \| command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+                \| command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+augroup END
 
-if has("autocmd")
-    autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+let g:go_fmt_autosave = 1
+let g:go_term_mode = 'vsplit'
+let g:go_fmt_command='goimports'
+
+
+" ----------------------------------------------------- }}}
+
+" Load all plugins ------------------------------- {{{
+if filereadable(expand('~/.vimrc.bundles'))
+    source ~/.vimrc.bundles
 endif
+" }}}
 
+" Auto commands ------------------------------------------------- {{{
+augroup vimrcEx
+    autocmd!
 
-""" SYSTEM CLIPBOARD COPY & PASTE SUPPORT
-set pastetoggle=<F2> "F2 before pasting to preserve indentation
-"Copy paste to/from clipboard
-vnoremap <C-c> "*y
-map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
-map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it for commit messages, when the position is invalid, or when
+    " inside an event handler (happens when dropping a file on gvim).
+    autocmd BufReadPost *
+                \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+                \   exe "normal g`\"" |
+                \ endif
 
-" Quickly close windows
-nnoremap <leader>x :x<cr>
-nnoremap <leader>X :q!<cr>
+    " Set syntax highlighting for specific file types
+    autocmd BufRead,BufNewFile .babelrc set filetype=json
+    autocmd BufRead,BufNewFile *.md set filetype=markdown
+    autocmd BufRead,BufNewFile .eslintrc,.prettierrc set filetype=json
+
+    " Enable spellchecking for Markdown
+    autocmd FileType markdown setlocal spell
+
+    " Automatically wrap at 80 characters for Markdown
+    autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+
+    " Automatically wrap at 72 characters and spell check git commit messages
+    autocmd FileType gitcommit setlocal textwidth=72
+    autocmd FileType gitcommit setlocal spell
+
+    " Allow stylesheets to autocomplete hyphenated words
+    autocmd FileType css,scss,sass setlocal iskeyword+=-
+
+    " Vim/tmux layout rebalancing
+    " automatically rebalance windows on vim resize
+    autocmd VimResized * :wincmd =
+augroup END
+" }}}
+
+" Vim Script file settings ------------------------ {{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+"  Key Mappings -------------------------------------------------- {{{
+
+" open FZF in current file's directory
+nnoremap <silent> <Leader>_ :Files <C-R>=expand('%:h')<CR><CR>
+
+" fold file based on syntax
+nnoremap <silent> <leader>zs :setlocal foldmethod=syntax<CR>
+
+" remove highlighting on escape
+map <silent> <esc> :nohlsearch<cr>
+
+" Pasting support
+set pastetoggle=<F2>  " Press F2 in insert mode to preserve tabs when
+" pasting from clipboard into terminal
+
+" Source (reload) your vimrc. Type space, s, o in sequence to trigger
+nnoremap <leader>so :source ~/.vimrc<cr>
+
+" VimPlug:
+nnoremap <leader>pi :PlugInstall<CR>
+nnoremap <leader>pu :PlugUpdate<CR>
+nnoremap <leader>pc :PlugClean<CR>
+
+" disable arrow keys in normal mode
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" --------------------- Key Mappings ---------------------------- }}}
+
+" For NeoVim ----------------------------------------------------- {{{
+if has('nvim')
+    " set cursor modes
+    set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+                \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+                \,sm:block-blinkwait175-blinkoff150-blinkon175
+
+    " interactive find replace preview
+    set inccommand=nosplit
+
+    " Navigate neovim + neovim terminal emulator with alt+direction
+    tnoremap <c-h> <C-\><C-n><C-w>h
+    tnoremap <c-j> <C-\><C-n><C-w>j
+    tnoremap <c-k> <C-\><C-n><C-w>k
+    tnoremap <c-l> <C-\><C-n><C-w>l
+endif
+" }}}
+
+" For VimPlug {{{
+function! PlugGx()
+    let l:line = getline('.')
+    let l:sha  = matchstr(l:line, '^  \X*\zs\x\{7,9}\ze ')
+
+    if (&filetype ==# 'vim-plug')
+        " inside vim plug splits such as :PlugStatus
+        let l:name = empty(l:sha)
+                    \ ? matchstr(l:line, '^[-x+] \zs[^:]\+\ze:')
+                    \ : getline(search('^- .*:$', 'bn'))[2:-2]
+    else
+        " in .vimrc.bundles
+        let l:name = matchlist(l:line, '\v/([A-Za-z0-9\-_\.]+)')[1]
+    endif
+
+    let l:uri  = get(get(g:plugs, l:name, {}), 'uri', '')
+    if l:uri !~? 'github.com'
+        return
+    endif
+    let l:repo = matchstr(l:uri, '[^:/]*/'.l:name)
+    let l:url  = empty(l:sha)
+                \ ? 'https://github.com/'.l:repo
+                \ : printf('https://github.com/%s/commit/%s', l:repo, l:sha)
+    call netrw#BrowseX(l:url, 0)
+endfunction
+
+augroup PlugGxGroup
+    autocmd!
+    autocmd BufRead,BufNewFile .vimrc.bundles nnoremap <buffer> <silent> gx :call PlugGx()<cr>
+    autocmd FileType vim-plug nnoremap <buffer> <silent> gx :call PlugGx()<cr>
+augroup END
+" }}}
+
