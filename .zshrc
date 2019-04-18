@@ -12,9 +12,8 @@ antigen apply
 
 alias e="$EDITOR"
 alias ew="$VISUAL"
-alias zshconfig="ew ~/.zshrc"
-alias i3conf="ew ~/.config/i3/config"
-alias i3bconf="ew ~/.config/i3/i3blocks.conf"
-alias l="exa -lgah"
-alias ls="exa"
+alias zshconfig="e ~/.zshrc"
+alias i3conf="e ~/.config/i3/config"
+alias i3bconf="e ~/.config/i3/i3blocks.conf"
+alias l="ls -lah"
 alias vim="nvim"

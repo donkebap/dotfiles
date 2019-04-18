@@ -152,6 +152,25 @@ Plug 'jremmen/vim-ripgrep'
 Plug 'junegunn/vim-easy-align'
 " }}}
 
+" TMUX: {{{
+" .tmux.conf syntax highlighting
+Plug 'keith/tmux.vim', { 'for': 'tmux' }
+
+" tmux config file stuff
+Plug 'tmux-plugins/vim-tmux', { 'on': 'Mux' }
+
+" seamless tmux/vim pane navigation
+Plug 'christoomey/vim-tmux-navigator', { 'on': 'Mux' }
+
+" yet another tmux plugin
+Plug 'benmills/vimux', { 'on': 'Mux' }
+" Run Golang tests in vimux
+Plug 'benmills/vimux-golang', { 'on': 'Mux' }
+
+" autocomplete using text from tmux
+Plug 'wellle/tmux-complete.vim', { 'on': 'Mux' }
+" }}}
+
 " Snippets: {{{
 " ES2015 code snippets (Optional)
 Plug 'epilande/vim-es2015-snippets', { 'for': ['javascript', 'javascript.jsx'] }
@@ -284,12 +303,10 @@ Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
 
 "' File icons in vim --- keep at the bottom, below airline, nerdtree and startify
 Plug 'ryanoasis/vim-devicons'
-"}}}
 
-" OWN PLUGINS: {{{
 " automatic bulleted lists
 Plug 'dkarter/bullets.vim'
-" }}}
+"}}}
 
 " ==================================================
 

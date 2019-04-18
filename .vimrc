@@ -6,7 +6,6 @@ filetype plugin indent on
 
 "  Behavior Modification ----------------------  {{{
 
-" set backspace=2       " Backspace deletes like most programs in insert mode
 set history=200
 set ruler
 set showcmd
@@ -42,6 +41,7 @@ set wildmode=list:longest,list:full
 " Line numbers
 set number
 set numberwidth=1
+set relativenumber
 
 " undo/backup files
 set backupdir=~/.vim/tmp,.
@@ -151,6 +151,7 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 let g:LanguageClient_serverCommands = {
             \ 'rust': ['rls'],
             \ 'javascript.jsx': ['javascript-typescript-stdio'],
+            \ 'typescript.tsx': ['javascript-typescript-stdio'],
             \ }
 
 let g:LanguageClient_hasSnippetSupport = 0
@@ -209,6 +210,7 @@ let g:indentLine_color_gui = '#454C5A'
 " ====================================
 " setup airline
 " ====================================
+let g:airline_theme='base16_vim'
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -374,16 +376,17 @@ nnoremap <silent> <leader>ne :ALENextWrap<CR>
 nnoremap <silent> <leader>pe :ALEPreviousWrap<CR>
 
 let g:ale_fixers = {
-            \   'javascript': ['prettier'],
-            \   'javascript.jsx': ['prettier'],
+            \   'javascript': ['prettier', 'eslint'],
+            \   'javascript.jsx': ['prettier', 'eslint'],
             \   'json': ['prettier'],
             \   'scss': ['prettier'],
             \   'bash': ['shfmt'],
             \   'zsh': ['shfmt'],
-            \   'rust': ['rustfmt'],
+            \   'rust': ['rustfmt']
             \}
 
 let g:ale_sh_shfmt_options = '-i 2 -ci'
+let g:ale_javascript_prettier_options = '--tab-width 4 --trailing-comma --single-quote'
 
 let g:ale_fix_on_save = 1
 
@@ -587,6 +590,18 @@ if has('nvim')
     tnoremap <c-j> <C-\><C-n><C-w>j
     tnoremap <c-k> <C-\><C-n><C-w>k
     tnoremap <c-l> <C-\><C-n><C-w>l
+endif
+" }}}
+
+" For TMux {{{
+function! Mux()
+    echom 'Loaded TMux plugins'
+endfunction
+
+command! Mux :call Mux()
+
+if exists('$TMUX')
+    :Mux
 endif
 " }}}
 

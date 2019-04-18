@@ -15,7 +15,7 @@ fi
 #
 
 export EDITOR='nvim'
-export VISUAL='emacsclient -n -c --socket-name /tmp/emacs1000/server -a emacs'
+export VISUAL='nvim'
 export PAGER='less'
 
 #
@@ -70,10 +70,10 @@ fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
 
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
-fi
-
-# if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-#  XKB_DEFAULT_LAYOUT=de exec sway
+# if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+#   exec startx
 # fi
+
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+ XKB_DEFAULT_LAYOUT=de exec sway
+fi
