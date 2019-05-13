@@ -19,11 +19,14 @@ Plug 'junegunn/fzf.vim'
 " }}}
 
 " Deoplete: {{{
-Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'Shougo/neco-syntax'
-Plug 'Shougo/neco-vim', { 'for': 'vim' }
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'fszymanski/deoplete-emoji'
-Plug 'zchee/deoplete-go'
 Plug 'wokalski/autocomplete-flow'
 Plug 'racer-rust/vim-racer'
 Plug 'zchee/deoplete-zsh', {'for': ['zsh', 'bash', 'sh']}
@@ -131,11 +134,6 @@ Plug 'tpope/vim-ragtag'
 Plug 'whatyouhide/vim-textobj-xmlattr'
 " }}}
 
-" WebAssembly: {{{
-" Syntax Highlighting:
-Plug 'rhysd/vim-wasm', { 'for': 'wasm' }
-" }}}
-
 " Searching: {{{
 " highlights all search results and allows tabbing between them
 Plug 'haya14busa/incsearch.vim'
@@ -223,10 +221,6 @@ Plug 'pearofducks/ansible-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'enricobacis/vim-airline-clock'
-" }}}
-
-" Golang: {{{
-Plug 'fatih/vim-go', { 'for': 'go' }
 " }}}
 
 " CSS/SCSS {{{

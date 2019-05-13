@@ -525,9 +525,6 @@ augroup vimrcEx
     " Allow stylesheets to autocomplete hyphenated words
     autocmd FileType css,scss,sass setlocal iskeyword+=-
 
-    " Vim/tmux layout rebalancing
-    " automatically rebalance windows on vim resize
-    autocmd VimResized * :wincmd =
 augroup END
 " }}}
 
@@ -590,18 +587,6 @@ if has('nvim')
     tnoremap <c-j> <C-\><C-n><C-w>j
     tnoremap <c-k> <C-\><C-n><C-w>k
     tnoremap <c-l> <C-\><C-n><C-w>l
-endif
-" }}}
-
-" For TMux {{{
-function! Mux()
-    echom 'Loaded TMux plugins'
-endfunction
-
-command! Mux :call Mux()
-
-if exists('$TMUX')
-    :Mux
 endif
 " }}}
 

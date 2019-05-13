@@ -34,7 +34,7 @@ export LIBVA_DRIVER_NAME=iHD
 # export CLUTTER_BACKEND=wayland
 # export QT_QPA_PLATFORM=wayland-egl
 # export SDL_VIDEODRIVER=wayland
-# export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 systemctl --user import-environment DISPLAY WAYLAND_DISPLAY
 
