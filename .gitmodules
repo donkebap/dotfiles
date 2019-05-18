@@ -13,3 +13,6 @@
 [submodule "awesome"]
 	path = awesome
 	url = https://github.com/donkebap/awesome.git
+[submodule "sway"]
+	path = sway
+	url = git@github.com:donkebap/sway.git

@@ -17,3 +17,4 @@ alias i3conf="e ~/.config/i3/config"
 alias i3bconf="e ~/.config/i3/i3blocks.conf"
 alias l="ls -lah"
 alias vim="nvim"
+alias kcd='kubectl config set-context $(kubectl config current-context) --namespace '

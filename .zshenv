@@ -18,9 +18,8 @@ if [ -d "${HOME}/.npm-packages" ] ; then
 fi
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
-# Needed to launch st in ranger with :terminal
-export TERMCMD=st
-
+# Needed to launch alacritty in ranger with :terminal
+export TERMCMD=alacritty
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export MAKEFLAGS="-j5 -l4"
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true'
