@@ -14,6 +14,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'kana/vim-textobj-user'
 
 " fzf greatness (fuzzy finding)
+Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 " }}}
