@@ -495,6 +495,39 @@ if filereadable(expand('~/.vimrc.bundles'))
 endif
 " }}}
 
+"  Plugin Modifications (AFTER loading bundles) ----- {{{
+if has('nvim') && !exists('$TMUX')
+" ------------------------------------
+" NVIMUX:
+" ------------------------------------
+
+lua << EOF
+local nvimux = require('nvimux')
+
+-- Nvimux configuration
+nvimux.config.set_all{
+  prefix = '<C-z>',
+  open_term_by_default = true,
+  new_window_buffer = 'single',
+  quickterm_direction = 'botright',
+  quickterm_orientation = 'vertical',
+  -- Use 'g' for global quickterm
+  quickterm_scope = 't',
+  quickterm_size = '80',
+}
+
+-- Nvimux custom bindings
+nvimux.bindings.bind_all{
+  {'s', ':NvimuxHorizontalSplit', {'n', 'v', 'i', 't'}},
+  {'v', ':NvimuxVerticalSplit', {'n', 'v', 'i', 't'}},
+}
+
+-- Required so nvimux sets the mappings correctly
+nvimux.bootstrap()
+EOF
+endif
+" }}}
+
 " Auto commands ------------------------------------------------- {{{
 augroup vimrcEx
     autocmd!
@@ -587,6 +620,18 @@ if has('nvim')
     tnoremap <c-j> <C-\><C-n><C-w>j
     tnoremap <c-k> <C-\><C-n><C-w>k
     tnoremap <c-l> <C-\><C-n><C-w>l
+endif
+" }}}
+
+" For TMux {{{
+function! Mux()
+    echom 'Loaded TMux plugins'
+endfunction
+
+command! Mux :call Mux()
+
+if exists('$TMUX')
+    :Mux
 endif
 " }}}
 

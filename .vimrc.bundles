@@ -51,6 +51,11 @@ if has('nvim')
     " Highlight Yanked String
     Plug 'machakann/vim-highlightedyank'
 
+    if !exists('$TMUX')
+        " simulate tmux shortcuts in neovim
+        Plug 'Vigemus/nvimux'
+    endif
+
     " Language Server Protocol (LSP) support for vim and neovim
     Plug 'autozimu/LanguageClient-neovim', {
                 \ 'branch': 'next',
