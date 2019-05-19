@@ -623,18 +623,6 @@ if has('nvim')
 endif
 " }}}
 
-" For TMux {{{
-function! Mux()
-    echom 'Loaded TMux plugins'
-endfunction
-
-command! Mux :call Mux()
-
-if exists('$TMUX')
-    :Mux
-endif
-" }}}
-
 " For VimPlug {{{
 function! PlugGx()
     let l:line = getline('.')
