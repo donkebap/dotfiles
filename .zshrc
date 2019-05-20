@@ -19,3 +19,4 @@ alias l="exa -lagh --group-directories-first"
 alias ls="exa"
 alias vim="nvim"
 alias kcd='kubectl config set-context $(kubectl config current-context) --namespace '
+alias snip="slurp | xargs -I {} grim -g {}"

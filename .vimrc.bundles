@@ -140,6 +140,11 @@ Plug 'tpope/vim-ragtag'
 Plug 'whatyouhide/vim-textobj-xmlattr'
 " }}}
 
+" YAML: {{{
+" yaml-vim: syntax & indent plugin for yaml
+Plug 'mrk21/yaml-vim'
+" }}}
+
 " Searching: {{{
 " highlights all search results and allows tabbing between them
 Plug 'haya14busa/incsearch.vim'

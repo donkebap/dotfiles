@@ -200,7 +200,8 @@ let g:indentLine_fileType = [
             \ 'javascript',
             \ 'javascript.jsx',
             \ 'html',
-            \ 'vim'
+            \ 'vim',
+            \ 'yml'
             \ ]
 
 let g:indentLine_char = '│'
