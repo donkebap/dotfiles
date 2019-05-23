@@ -10,9 +10,6 @@
 [submodule "emacsd"]
 	path = emacsd
 	url = https://github.com/donkebap/emacsd.git
-[submodule "awesome"]
-	path = awesome
-	url = https://github.com/donkebap/awesome.git
 [submodule "sway"]
 	path = sway
 	url = git@github.com:donkebap/sway.git

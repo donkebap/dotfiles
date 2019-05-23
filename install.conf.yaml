@@ -31,12 +31,10 @@
     ~/.config/sway:
       force: true
       path: sway
-    ~/.foobar2000/configuration/foo_ui_columns.dll.cfg: .foobar2000/configuration/foo_ui_columns.dll.cfg
     ~/.config/pulse/presets/MySoftRock.preset: .config/pulse/presets/MySoftRock.preset
     ~/.config/mpv: .config/mpv
     ~/.npmrc: .npmrc
     ~/.config/compton.conf: .config/compton.conf
-    ~/.config/awesome: awesome
     ~/.tmux.conf: .tmux.conf
     ~/.pam_environment: .pam_environment
     ~/.ssh/config: .ssh/config
