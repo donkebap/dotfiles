@@ -17,10 +17,8 @@
     ~/.xinitrc:
       force: true
       path: .xinitrc
-    ~/.Xresources: .Xresources
     ~/.gitignore_global: .gitignore_global
     ~/.gitconfig: .gitconfig
-    ~/.emacs.d: emacsd
     ~/.vimrc: .vimrc
     ~/.vimrc.bundles: .vimrc.bundles
     ~/.config/alacritty/alacritty.yml: .config/alacritty/alacritty.yml
