@@ -14,6 +14,7 @@
     ~/.zshrc:
       force: true
       path: .zshrc
+    ~/.zsh_plugins.txt: .zsh_plugins.txt
     ~/.xinitrc:
       force: true
       path: .xinitrc
