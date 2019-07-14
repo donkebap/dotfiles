@@ -8,6 +8,12 @@ alias vim="nvim"
 alias kcd='kubectl config set-context $(kubectl config current-context) --namespace '
 alias snip="slurp | xargs -I {} grim -g {}"
 
+# One-line prompt
+export AGKOZAK_MULTILINE=0
+export AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
+# Fixes line before prompt
+unsetopt PROMPT_SP
+
 # emacs key binding
 bindkey -e
 bindkey "^[[3~" delete-char

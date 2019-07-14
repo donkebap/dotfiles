@@ -29,11 +29,12 @@ export LIBVA_DRIVERS_PATH=/usr/lib/dri
 export LIBVA_DRIVER_NAME=iHD
 
 # For swaywm
-# export GDK_BACKEND=wayland
-# export CLUTTER_BACKEND=wayland
-# export QT_QPA_PLATFORM=wayland-egl
-# export SDL_VIDEODRIVER=wayland
+export QT_QPA_PLATFORM=wayland-egl
+export SDL_VIDEODRIVER=wayland
+# Some Java AWT apps might no display properly without this
 export _JAVA_AWT_WM_NONREPARENTING=1
+# Wayland isn't default yet for firefox
+export MOZ_ENABLE_WAYLAND=1
 
 systemctl --user import-environment DISPLAY WAYLAND_DISPLAY
 
