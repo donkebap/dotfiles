@@ -1,0 +1,274 @@
+## TODO: Disable caps lock. Change to ctrl.
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term alacritty
+# Your preferred application launcher
+# Note: it's recommended that you pass the final command to sway
+set $menu dmenu_path | /usr/bin/rofi -modi drun -show drun | xargs swaymsg exec
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in __DATADIR__/backgrounds/sway/)
+output * bg ~/Pictures/current_wallpaper fill
+
+### Idle configuration
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 600 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+    timeout 600 'swaylock -f -i ~/Pictures/current_wallpaper' \
+    timeout 900 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -i ~/Pictures/current_wallpaper' \
+    lock 'swaylock -f -i ~/Pictures/current_wallpaper'
+
+# Rebind swaylock to [MOD+Shift+X]
+bindsym --release $mod+Shift+x exec loginctl lock-session
+
+# Clamshell mode
+set $laptop eDP-1
+bindswitch lid:on output $laptop disable
+bindswitch lid:off output $laptop enable
+
+### Input configuration
+# Keyboard Corsair K70
+input "6940:6921:Corsair_Corsair_K70R_Gaming_Keyboard" {
+    xkb_layout de
+    xkb_options caps:escape
+    xkb_numlock enabled
+}
+# Internal keyboard
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_layout de
+    xkb_options caps:escape
+}
+# Touchpad
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    tap disabled
+    natural_scroll enabled
+    dwt enabled
+}
+
+# Trackpoint
+input "2:10:TPPS/2_IBM_TrackPoint" {
+    accel_profile flat
+}
+
+### Key bindings
+#
+# Basics:
+#
+    # start a terminal
+    bindsym $mod+Return exec $term
+
+    # kill focused window
+    bindsym $mod+Shift+q kill
+
+    # start your launcher
+    bindsym $mod+d exec $menu
+
+    # start file browser
+    bindsym $mod+n exec alacritty -e /usr/bin/ranger
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # _move_ the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+
+    # Switch workspaces
+    bindsym $mod+Tab workspace next
+    bindsym $mod+Shift+Tab workspace prev
+
+#
+# Workspaces:
+#
+    set $WS1 "1:"
+    set $WS2 "2:"
+    set $WS3 "3:"
+    set $WS4 "4:"
+    set $WS5 "5"
+    set $WS6 "6"
+    set $WS7 "7:"
+    set $WS8 "8:"
+    set $WS9 "9:"
+    set $WS10 "10:"
+
+    # switch to workspace
+    bindsym $mod+1 workspace $WS1
+    bindsym $mod+2 workspace $WS2
+    bindsym $mod+3 workspace $WS3
+    bindsym $mod+4 workspace $WS4
+    bindsym $mod+5 workspace $WS5
+    bindsym $mod+6 workspace $WS6
+    bindsym $mod+7 workspace $WS7
+    bindsym $mod+8 workspace $WS8
+    bindsym $mod+9 workspace $WS9
+    bindsym $mod+0 workspace $WS10
+    # move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace $WS1
+    bindsym $mod+Shift+2 move container to workspace $WS2
+    bindsym $mod+Shift+3 move container to workspace $WS3
+    bindsym $mod+Shift+4 move container to workspace $WS4
+    bindsym $mod+Shift+5 move container to workspace $WS5
+    bindsym $mod+Shift+6 move container to workspace $WS6
+    bindsym $mod+Shift+7 move container to workspace $WS7
+    bindsym $mod+Shift+8 move container to workspace $WS8
+    bindsym $mod+Shift+9 move container to workspace $WS9
+    bindsym $mod+Shift+0 move container to workspace $WS10
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+##########
+# Colors #
+##########
+set	$bg		#282828
+set	$fg		#ebdbb2
+set	$red		#cc241d
+set	$green		#98971a
+set	$yellow		#d79921
+set	$blue		#458588
+set	$purple		#b16286
+set	$aqua		#689d6a
+set	$gray		#a89984
+set	$darkgray	#1d2021
+set	$white		#ffffff
+
+bar {
+    strip_workspace_numbers yes
+    position top
+    font pango:sans-serif
+    status_command /usr/bin/i3status-rs ~/.config/sway/status.toml
+
+    colors {
+	background $bg
+	statusline $fg
+	separator $red
+	#                    border	backgr.	text
+	focused_workspace    $yellow	$yellow	$darkgray
+	inactive_workspace   $bg	$bg	$fg
+	active_workspace     $bg	$bg	$yellow
+	urgent_workspace     $red	$red	$bg
+    }
+}
+
+# class                 border  backgr.		text		indicator
+client.focused          $yellow $yellow		$darkgray	$purple		$darkgray
+client.focused_inactive $bg	$darkgray 	$fg 		$purple 	$darkgray
+client.unfocused        $bg	$darkgray 	$fg 		$purple 	$darkgray
+client.urgent           $red	$red 		$white 		$red 		$red
+
+# Gaps
+# gaps inner 5
+# gaps outer 5
+
+# Disables switching windows on mouseover
+focus_follows_mouse no
+
+# Launch notification daemon
+exec mako
+
+include /etc/sway/config.d/*
