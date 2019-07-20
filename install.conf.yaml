@@ -32,14 +32,9 @@
     ~/.config/pulse/presets/MySoftRock.preset: .config/pulse/presets/MySoftRock.preset
     ~/.config/mpv: .config/mpv
     ~/.npmrc: .npmrc
-    ~/.config/compton.conf: .config/compton.conf
     ~/.tmux.conf: .tmux.conf
     ~/.pam_environment: .pam_environment
     ~/.ssh/config: .ssh/config
-    ~/.config/mpd/mpd.conf: .config/mpd/mpd.conf
-    ~/.config/mpd/playlists: .config/mpd/playlists
-    ~/.ncmpcpp/config: .ncmpcpp/config
-    ~/.config/dunst/dunstrc: .config/dunst/dunstrc
     ~/.config/ranger/commands_full.py: .config/ranger/commands_full.py
     ~/.config/ranger/commands.py: .config/ranger/commands.py
     ~/.config/ranger/rc.conf: .config/ranger/rc.conf
