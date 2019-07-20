@@ -29,7 +29,7 @@ export LIBVA_DRIVERS_PATH=/usr/lib/dri
 export LIBVA_DRIVER_NAME=iHD
 
 # For swaywm
-export QT_QPA_PLATFORM=wayland-egl
+#export QT_QPA_PLATFORM=wayland-egl
 export SDL_VIDEODRIVER=wayland
 # Some Java AWT apps might no display properly without this
 export _JAVA_AWT_WM_NONREPARENTING=1

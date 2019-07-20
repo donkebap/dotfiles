@@ -29,3 +29,6 @@ if type "antibody" > /dev/null; then
 else
     echo "Antibody is not installed."
 fi
+
+# Regex history search
+bindkey '^R' history-incremental-pattern-search-backward
