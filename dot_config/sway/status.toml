@@ -31,17 +31,6 @@ block = "cpu"
 interval = 1
 
 [[block]]
-block = "load"
-interval = 1
-format = "{1m}"
-
-[[block]]
-block = "temperature"
-collapsed = false
-interval = 10
-format = "{min}°|{max}°|{average}°"
-
-[[block]]
 block = "sound"
 
 [[block]]

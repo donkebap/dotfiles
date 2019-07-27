@@ -5,10 +5,12 @@ fi
 
 export HISTORY_IGNORE="(ls *|l *|exit|cd *|pwd|pass*|mpv *|ranger *|sxiv *)"
 
+# Set cargo bin path
 if [ -d "$HOME/.cargo/bin" ] ; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+# Set npm packages path
 if [ -d "${HOME}/.npm-packages" ] ; then
     NPM_PACKAGES="$HOME/.npm-packages"
     export PATH="$NPM_PACKAGES/bin:$PATH"
@@ -17,9 +19,6 @@ if [ -d "${HOME}/.npm-packages" ] ; then
     export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 fi
 
-export RANGER_LOAD_DEFAULT_RC=FALSE
-# Needed to launch alacritty in ranger with :terminal
-export TERMCMD=alacritty
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export MAKEFLAGS="-j5 -l4"
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true'
@@ -28,13 +27,21 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun
 export LIBVA_DRIVERS_PATH=/usr/lib/dri
 export LIBVA_DRIVER_NAME=iHD
 
-# For swaywm
+# swaywm
 #export QT_QPA_PLATFORM=wayland-egl
 export SDL_VIDEODRIVER=wayland
 # Some Java AWT apps might no display properly without this
 export _JAVA_AWT_WM_NONREPARENTING=1
 # Wayland isn't default yet for firefox
 export MOZ_ENABLE_WAYLAND=1
+
+# ranger
+export RANGER_LOAD_DEFAULT_RC=FALSE
+# Needed to launch alacritty in ranger with :terminal
+export TERMCMD=alacritty
+
+# bc
+export BC_ENV_ARGS="$HOME/.config/bc/config"
 
 systemctl --user import-environment DISPLAY WAYLAND_DISPLAY
 
