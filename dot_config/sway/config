@@ -52,7 +52,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_options caps:escape
 }
 # Touchpad
-input "2:7:SynPS/2_Synaptics_TouchPad" {
+input "1739:0:Synaptics_TM3276-022" {
+    events disabled_on_external_mouse
     tap disabled
     natural_scroll enabled
     dwt enabled
