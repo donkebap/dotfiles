@@ -1,0 +1,10 @@
+[Default Applications]
+inode/directory=ranger.desktop
+image/png=sxiv.desktop
+application/pdf=org.pwmt.zathura.desktop
+video/x-matroska=mpv.desktop
+video/webm=mpv.desktop
+video/mp4=mpv.desktop
+application/mp4=mpv.desktop
+audio/mp4=mpv.desktop
+application/x-shockwave-flash=mpv.desktop
