@@ -217,6 +217,7 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': 'java
 
 " TypeScript: {{{
 Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
 "}}}
 
 " Docker {{{

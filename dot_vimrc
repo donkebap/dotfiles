@@ -380,6 +380,8 @@ nnoremap <silent> <leader>pe :ALEPreviousWrap<CR>
 let g:ale_fixers = {
             \   'javascript': ['prettier', 'eslint'],
             \   'javascript.jsx': ['prettier', 'eslint'],
+            \   'typescript': ['prettier'],
+            \   'typescript.tsx': ['prettier'],
             \   'json': ['prettier'],
             \   'scss': ['prettier'],
             \   'bash': ['shfmt'],
