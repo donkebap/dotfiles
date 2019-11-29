@@ -20,6 +20,8 @@ set $menu dmenu_path | /usr/bin/rofi -modi drun -show drun | xargs swaymsg exec
 # Default wallpaper (more resolutions are available in __DATADIR__/backgrounds/sway/)
 output * bg ~/Pictures/current_wallpaper fill
 
+output 'Acer Technologies VG270U P 0x0000F7F4' mode 2560x1440
+
 ### Idle configuration
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 600 seconds, and turn your screens back on when
