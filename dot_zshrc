@@ -15,7 +15,7 @@ export AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
 unsetopt PROMPT_SP
 
 # emacs key binding
-bindkey -v
+bindkey -e
 bindkey "^[[3~" delete-char
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
