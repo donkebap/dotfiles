@@ -7,6 +7,7 @@ alias ls="exa"
 alias vim="nvim"
 alias kcd='kubectl config set-context $(kubectl config current-context) --namespace '
 alias snip="slurp | xargs -I {} grim -g {}"
+alias snipc="snip - | wl-copy"
 
 # One-line prompt
 export AGKOZAK_MULTILINE=0
