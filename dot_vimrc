@@ -19,9 +19,9 @@ set foldmethod=manual
 set mouse=a
 set iskeyword+=-
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 set shiftround
 set termguicolors
@@ -390,7 +390,7 @@ let g:ale_fixers = {
             \}
 
 let g:ale_sh_shfmt_options = '-i 2 -ci'
-let g:ale_javascript_prettier_options = '--tab-width 4 --trailing-comma --single-quote'
+let g:ale_javascript_prettier_options = '--tab-width 2 --trailing-comma --single-quote'
 
 let g:ale_fix_on_save = 1
 
