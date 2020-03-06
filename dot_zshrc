@@ -9,6 +9,9 @@ alias kcd='kubectl config set-context $(kubectl config current-context) --namesp
 alias snip="slurp | xargs -I {} grim -g {}"
 alias snipc="snip - | wl-copy"
 
+# Treat these characters as part of a word.
+WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
+
 # One-line prompt
 export AGKOZAK_MULTILINE=0
 export AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
