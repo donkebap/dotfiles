@@ -44,6 +44,3 @@ export TERMCMD=alacritty
 
 # bc
 export BC_ENV_ARGS="$HOME/.config/bc/config"
-
-systemctl --user import-environment DISPLAY WAYLAND_DISPLAY
-
