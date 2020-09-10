@@ -44,3 +44,6 @@ export TERMCMD=alacritty
 
 # bc
 export BC_ENV_ARGS="$HOME/.config/bc/config"
+
+# pacdiff
+export DIFFPROG="nvim -d"
