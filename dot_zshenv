@@ -3,7 +3,7 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-export HISTORY_IGNORE="(ls *|l *|exit|cd *|pwd|pass*|mpv *|ranger *|sxiv *)"
+export HISTORY_IGNORE="(ls *|l *|find *|exit|cd *|pwd|gopass*|mpv *|ranger *|sxiv *)"
 
 # Set cargo bin path
 if [ -d "$HOME/.cargo/bin" ] ; then

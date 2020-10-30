@@ -3,7 +3,7 @@ icons = "awesome"
 
 [[block]]
 block = "net"
-device = "ens8u1u4"
+device = "ens1u2u1u2"
 ip = true
 interval = 5
 
