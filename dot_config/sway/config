@@ -38,8 +38,8 @@ bindsym --release $mod+Shift+x exec loginctl lock-session
 
 # Clamshell mode
 set $laptop eDP-1
-bindswitch --reload lid:on output $laptop disable
-bindswitch --reload lid:off output $laptop enable
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
 ### Input configuration
 input "type:keyboard" {
