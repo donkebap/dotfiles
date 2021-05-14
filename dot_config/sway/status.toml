@@ -3,14 +3,12 @@ icons = "awesome"
 
 [[block]]
 block = "net"
-device = "ens1u2u1u2"
-ip = true
+device = "enp9s0u2u1u2"
 interval = 5
 
 [[block]]
 block = "net"
 device = "wlp3s0"
-ip = true
 interval = 5
 
 [[block]]
@@ -24,7 +22,7 @@ interval = 20
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{MAg}G"
+format_mem = "{mem_avail}"
 
 [[block]]
 block = "cpu"
