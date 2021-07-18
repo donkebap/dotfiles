@@ -59,6 +59,10 @@ input "2:10:TPPS/2_IBM_TrackPoint" {
     accel_profile flat
 }
 
+# Wacom
+input 1386:855:Wacom_Intuos_Pro_M_Pen map_to_output DP-5
+
+
 ### Key bindings
 #
 # Basics:
