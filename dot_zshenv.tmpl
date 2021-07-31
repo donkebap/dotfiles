@@ -1,9 +1,8 @@
+{{ if (eq .chezmoi.os "linux") -}}
 # Ensure that a non-login, non-interactive shell has a defined environment.
 if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
-
-export HISTORY_IGNORE="(ls *|l *|find *|exit|cd *|pwd|gopass*|mpv *|ranger *|sxiv *)"
 
 # Set cargo bin path
 if [ -d "$HOME/.cargo/bin" ] ; then
@@ -20,7 +19,6 @@ if [ -d "${HOME}/.npm-packages" ] ; then
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
-
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export MAKEFLAGS="-j5 -l4"
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true'
@@ -36,6 +34,9 @@ export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 # Wayland isn't default yet for firefox
 export MOZ_ENABLE_WAYLAND=1
+{{- end }}
+
+export HISTORY_IGNORE="(ls *|l *|find *|exit|cd *|pwd|gopass*|mpv *|ranger *|sxiv *)"
 
 # ranger
 export RANGER_LOAD_DEFAULT_RC=FALSE

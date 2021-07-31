@@ -1,13 +1,13 @@
 alias e="$EDITOR"
 alias ew="$VISUAL"
-alias zshconfig="e ~/.zshrc"
-alias swayconf="e ~/.config/sway/config"
 alias l="exa -lagh --group-directories-first"
 alias ls="exa"
 alias vim="nvim"
+{{- if (eq .chezmoi.os "linux") }}
 alias kcd='kubectl config set-context $(kubectl config current-context) --namespace '
 alias snip="slurp | xargs -I {} grim -g {}"
 alias snipc="snip - | wl-copy"
+{{- end }}
 
 # Treat these characters as part of a word.
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'

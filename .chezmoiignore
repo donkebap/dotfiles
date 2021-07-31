@@ -1,1 +1,19 @@
+{{ if ne .chezmoi.os "linux" }}
+dot_config/aerc
+dot_config/bc
+dot_config/mpv
+dot_config/pacman
+dot_config/private_pipewire
+dot_config/private_pulse
+dot_config/ranger
+dot_config/sway
+dot_config/systemd
+dot_config/wofi
+dot_config/mimeapps.list
+dot_config/private_user-dirs.dirs
+dot_config/user-dirs.locale
+dot_ssh
+dot_npmrc
+dot_pam_environment
+{{ end }}
 README.md

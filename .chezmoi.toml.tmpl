@@ -1,0 +1,8 @@
+[merge]
+    command = "nvim"
+    args = "-d"
+{{- $fullname := promptString "Full name" }}
+{{- $email := promptString "E-Mail" }}
+[data]
+    fullname = {{ $fullname | quote }}
+    email = {{ $email | quote }}
