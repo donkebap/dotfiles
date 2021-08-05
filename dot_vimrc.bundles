@@ -136,6 +136,9 @@ Plug 'mattn/emmet-vim'
 " RagTag: Auto-close html tags + mappings for template scripting languages
 Plug 'tpope/vim-ragtag'
 
+" Handlebars: Handlebars templates
+Plug 'mustache/vim-mustache-handlebars'
+
 " add text object for HTML attributes - allows dax cix etc
 Plug 'whatyouhide/vim-textobj-xmlattr'
 " }}}
