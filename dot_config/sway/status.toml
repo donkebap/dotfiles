@@ -2,6 +2,18 @@ theme = "slick"
 icons = "awesome"
 
 [[block]]
+block = "taskwarrior"
+interval = 60
+format = "{count} open tasks ({filter_name})"
+format_singular = "{count} open task ({filter_name})"
+format_everything_done = "nothing to do!"
+warning_threshold = 10
+critical_threshold = 20
+[[block.filters]]
+name = "today"
+filter = "+PENDING +OVERDUE or +DUETODAY"
+
+[[block]]
 block = "net"
 device = "enp9s0u2u1u2"
 interval = 5
