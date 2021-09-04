@@ -1,6 +1,6 @@
 [merge]
     command = "nvim"
-    args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
+    args = ["-d", "{{ `{{ .Destination }}` }}", "{{ `{{ .Source }}` }}", "{{ `{{ .Target }}` }}"]
 {{- $fullname := promptString "Full name" }}
 {{- $email := promptString "E-Mail" }}
 [data]
