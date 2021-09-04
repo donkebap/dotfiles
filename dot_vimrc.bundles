@@ -43,6 +43,11 @@ if has('nvim')
 endif
 " }}}
 
+" Theme: {{{
+" Gruvbox
+Plug 'morhetz/gruvbox'
+" }}}
+
 " Git: {{{
 " Asynchronously control git repositories in Neovim/Vim 8
 Plug 'lambdalisue/gina.vim'

@@ -170,7 +170,6 @@ let g:indentLine_color_gui = '#454C5A'
 " ====================================
 " setup airline
 " ====================================
-let g:airline_theme='base16_vim'
 let g:airline#extensions#branch#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
@@ -488,6 +487,9 @@ endif
 " Auto commands ------------------------------------------------- {{{
 augroup vimrcEx
     autocmd!
+
+    " Set theme
+    autocmd vimenter * ++nested colorscheme gruvbox
 
     " When editing a file, always jump to the last known cursor position.
     " Don't do it for commit messages, when the position is invalid, or when
