@@ -295,8 +295,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " Toggle between different language verbs or syntax styles
 Plug 'AndrewRadev/switch.vim'
-" fancy vim start page
-Plug 'mhinz/vim-startify'
 
 " Rust support
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -310,7 +308,7 @@ Plug 'jiangmiao/auto-pairs'
 " resize windows in vim naturally
 Plug 'simeji/winresizer', { 'on': 'WinResizerStartResize' }
 
-"' File icons in vim --- keep at the bottom, below airline, nerdtree and startify
+"' File icons in vim --- keep at the bottom, below airline, nerdtree
 Plug 'ryanoasis/vim-devicons'
 
 " automatic bulleted lists
