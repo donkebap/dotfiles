@@ -96,58 +96,13 @@ nnoremap <C-w>r :WinResizerStartResize<CR>
 nnoremap <silent> <leader>ut :UndotreeToggle<CR>
 
 " ====================================
-" Deoplete:
-" ====================================
-
-let g:deoplete#enable_at_startup = 1
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ deoplete#mappings#manual_complete()
-
-function! s:check_back_space() abort
-    let l:col = col('.') - 1
-    return !l:col || getline('.')[l:col - 1]  =~? '\s'
-endfunction
-
-autocmd VimEnter * call deoplete#custom#var('omni', 'input_patterns', {
-      \ 'css': '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]',
-      \ 'scss': '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]',
-      \ 'javascript.jsx': '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
-      \})
-
-" ====================================
-" Vim multiple cursors + DEOPLETE:
-" ====================================
-augroup VimMultiCursors
-    autocmd!
-    autocmd User MultipleCursorsPre let g:deoplete#disable_auto_complete=1
-    autocmd User MultipleCursorsPost let g:deoplete#disable_auto_complete=0
-augroup END
-
-
-" ====================================
-" Neosnippet:
-" ====================================
-
-let g:neosnippet#enable_completed_snippet = 1
-
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ neosnippet#expandable_or_jumpable() ?
-            \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-            \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-
-let g:neosnippet#enable_snipmate_compatibility = 1
-
+" CoC:
+" ===================================
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " ====================================
 " LanguageClient-neovim:

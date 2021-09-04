@@ -19,27 +19,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 " }}}
 
-" Deoplete: {{{
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'fszymanski/deoplete-emoji'
-Plug 'wokalski/autocomplete-flow'
-Plug 'racer-rust/vim-racer'
-Plug 'zchee/deoplete-zsh', {'for': ['zsh', 'bash', 'sh']}
-
-" For func argument completion
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-
-" include ctags for deoplete
-Plug 'Shougo/neoinclude.vim'
-" }}}
-
 " Neovim: {{{
 if has('nvim')
     " abstraction on top of neovim terminal
@@ -216,6 +195,9 @@ Plug 'tpope/vim-jdaddy', { 'for': 'json' }
 
 " syntax highlighting for styled components
 Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': 'javascript.jsx' }
+
+" CoC
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " }}}
 
 " TypeScript: {{{
