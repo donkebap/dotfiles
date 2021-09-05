@@ -6,6 +6,7 @@ filetype plugin indent on
 
 "  Behavior Modification ----------------------  {{{
 
+let mapleader = " "
 set history=200
 set ruler
 set showcmd
