@@ -45,7 +45,7 @@ endif
 
 " Theme: {{{
 " Gruvbox
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 " }}}
 
 " Git: {{{
