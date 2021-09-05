@@ -19,6 +19,7 @@ set noshowmode
 set foldmethod=manual
 set mouse=a
 set iskeyword+=-
+set signcolumn=yes
 
 set tabstop=2
 set softtabstop=2
@@ -44,6 +45,8 @@ set wildmode=list:longest,list:full
 set number
 set numberwidth=1
 set relativenumber
+
+set scrolloff=8
 
 " undo/backup files
 set backupdir=~/.vim/tmp,.
