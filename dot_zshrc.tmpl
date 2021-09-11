@@ -15,8 +15,10 @@ WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 # One-line prompt
 export AGKOZAK_MULTILINE=0
 export AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
+{{- if (eq .chezmoi.os "linux") }}
 # Fixes line before prompt
 unsetopt PROMPT_SP
+{{- end }}
 
 # emacs key binding
 bindkey -e
