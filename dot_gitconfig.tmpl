@@ -8,6 +8,8 @@
 	autocrlf = input
 [commit]
 	gpgsign = true
+[pull]
+  rebase = true
 [diff "sopsdiffer"]
 	textconv = sops -d
 {{- end }}
