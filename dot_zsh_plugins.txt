@@ -1,4 +1,3 @@
 sorin-ionescu/prezto path:modules/completion
 sorin-ionescu/prezto path:modules/history
 zsh-users/zsh-syntax-highlighting
-agkozak/agkozak-zsh-prompt

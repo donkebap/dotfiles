@@ -14,14 +14,6 @@ alias ttfbcurl='curl -s -o /dev/null -w "Connect: %{time_connect} TTFB: %{time_s
 # Treat these characters as part of a word.
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
-# One-line prompt
-export AGKOZAK_MULTILINE=0
-export AGKOZAK_PROMPT_CHAR=( ❯ ❯ ❮ )
-{{- if (eq .chezmoi.os "linux") }}
-# Fixes line before prompt
-unsetopt PROMPT_SP
-{{- end }}
-
 # emacs key binding
 bindkey -e
 bindkey "^[[3~" delete-char
@@ -40,3 +32,8 @@ fi
 
 # Regex history search
 bindkey '^R' history-incremental-pattern-search-backward
+
+if [ -x /usr/bin/starship ]; then
+  eval "$(starship init zsh)"
+fi
+
