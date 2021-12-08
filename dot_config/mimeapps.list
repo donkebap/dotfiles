@@ -1,4 +1,6 @@
 [Default Applications]
+image/jpeg=imv.desktop
+image/png=imv.desktop
 inode/directory=ranger.desktop
 application/pdf=org.pwmt.zathura.desktop
 video/x-matroska=mpv.desktop
