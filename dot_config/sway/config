@@ -18,9 +18,11 @@ set $menu dmenu_path | /usr/bin/wofi --show drun -i | xargs swaymsg exec --
 # Default wallpaper (more resolutions are available in __DATADIR__/backgrounds/sway/)
 output * bg ~/Pictures/current_wallpaper fill
 
+exec_always ~/.config/sway/lid.sh
+
 output 'BenQ Corporation BenQ GW2765 98E10513019' mode 2560x1440@59.951000Hz pos 0 0
-output 'Acer Technologies VG270U P 0x0000F7F4' mode 2560x1440@59.951000Hz pos 2560 0 adaptive_sync on
-output eDP-1 mode 1920x1080@60.020000Hz pos 2560 1440
+output 'Acer Technologies VG270U P 0x0000F7F4' mode 2560x1440@59.951000Hz pos 2560 0
+exec swaymsg focus output 'Acer Technologies VG270U P 0x0000F7F4'
 
 ### Idle configuration
 # This will lock your screen after 300 seconds of inactivity, then turn off
