@@ -1,6 +1,7 @@
 {{ if ne .chezmoi.os "linux" }}
 .config/aerc
 .config/bc
+.config/mimeapps.list
 .config/mpv
 .config/pacman
 .config/pipewire
@@ -8,12 +9,12 @@
 .config/ranger
 .config/sway
 .config/systemd
-.config/wofi
-.config/mimeapps.list
 .config/user-dirs.dirs
 .config/user-dirs.locale
-.ssh
+.config/wireplumber
+.config/wofi
 .npmrc
 .pam_environment
+.ssh
 {{ end }}
 README.md
