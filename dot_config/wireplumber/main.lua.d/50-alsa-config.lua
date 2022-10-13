@@ -120,11 +120,11 @@ alsa_monitor.rules = {
   {
     matches = {
       {
-        { "node.name", "matches", "alsa_output.usb-SMSL_Audio_Sanskrit_6th-00.*" },
+        { "node.name", "matches", "alsa_output.usb-Schiit_Audio_Schiit_Unison_Modius_ES-00.*" },
       },
     },
     apply_properties = {
-      ["audio.format"]           = "S32LE",
+      ["audio.format"]           = "S24LE",
       ["audio.rate"]             = 192000,
     },
   },
