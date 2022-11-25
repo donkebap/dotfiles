@@ -34,6 +34,9 @@ export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 # Wayland isn't default yet for firefox
 export MOZ_ENABLE_WAYLAND=1
+
+# Define GPG agent as SSH authentication agent
+export SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh
 {{- end }}
 
 {{- if (eq .chezmoi.os "darwin") }}
