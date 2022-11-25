@@ -28,8 +28,6 @@ set expandtab
 set shiftround
 set termguicolors
 set hidden
-
-set textwidth=80
 set nowrap
 
 set ttyfast
