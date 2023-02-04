@@ -21,18 +21,23 @@ bindkey "^[[3~" delete-char
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 
-if type "antibody" > /dev/null; then
-    if [[ ! -f ~/.zsh_plugins.sh && -f ~/.zsh_plugins.txt ]]; then
-        echo "Creating .zsh_plugins.sh"
-        antibody bundle < ~/.zsh_plugins.txt > ~/.zsh_plugins.sh
-    fi
-    source ~/.zsh_plugins.sh
-else
-    echo "Antibody is not installed."
-fi
-
 # Regex history search
 bindkey '^R' history-incremental-pattern-search-backward
+
+ZIM_HOME=~/.zim
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+      https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+fi
+
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+
+# Initialize modules.
+source ${ZIM_HOME}/init.zsh
 
 if [ -x /usr/bin/starship ]; then
   eval "$(starship init zsh)"

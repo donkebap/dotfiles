@@ -1,0 +1,3 @@
+zmodule sorin-ionescu/prezto --root modules/completion
+zmodule sorin-ionescu/prezto --root modules/history
+zmodule zsh-users/zsh-syntax-highlighting
