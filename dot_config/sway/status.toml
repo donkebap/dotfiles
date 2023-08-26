@@ -6,18 +6,15 @@ icons = "awesome5"
 [[block]]
 block = "net"
 device = "enp9s0u2u1u2"
-interval = 5
 
 [[block]]
 block = "net"
 device = "wlp3s0"
-interval = 5
 
 [[block]]
 block = "disk_space"
 path = "/"
 info_type = "available"
-interval = 20
 
 [[block]]
 block = "memory"
@@ -25,7 +22,6 @@ format = " $mem_avail "
 
 [[block]]
 block = "cpu"
-interval = 1
 format = " $icon $utilization "
 
 [[block]]
@@ -34,13 +30,11 @@ block = "sound"
 [[block]]
 block = "battery"
 device = "BAT0"
-interval = 10
 format = " $percentage% $time "
 
 [[block]]
 block = "battery"
 device = "BAT1"
-interval = 10
 format = " $percentage% $time "
 
 [[block]]
