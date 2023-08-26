@@ -18,22 +18,8 @@ set $menu dmenu_path | /usr/bin/wofi --show drun -i | xargs swaymsg exec --
 # Default wallpaper (more resolutions are available in __DATADIR__/backgrounds/sway/)
 output * bg ~/Pictures/current_wallpaper fill
 
-exec_always ~/.config/sway/lid.sh
-
-output 'BenQ Corporation BenQ GW2765 98E10513019' mode 2560x1440@59.951000Hz pos 0 0
-output 'Acer Technologies VG270U P 0x0000F7F4' mode 2560x1440@59.951000Hz pos 2560 0
-exec swaymsg focus output 'Acer Technologies VG270U P 0x0000F7F4'
-
-### Idle configuration
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 600 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-exec swayidle -w \
-    timeout 600 'swaylock -f -i ~/Pictures/current_wallpaper' \
-    timeout 900 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -f -i ~/Pictures/current_wallpaper' \
-    lock 'swaylock -f -i ~/Pictures/current_wallpaper'
+output 'BNQ BenQ GW2765 98E10513019' res 2560x1440@59.951000Hz pos 0 0
+output 'Acer Technologies VG270U P 0x0000F7F4' res 2560x1440@59.951000Hz pos 2560 0
 
 # Rebind swaylock to [MOD+Shift+X]
 bindsym --release $mod+Shift+x exec loginctl lock-session
@@ -48,6 +34,10 @@ input "type:keyboard" {
     xkb_layout de
     xkb_options caps:escape
     xkb_numlock enabled
+}
+input "19266:24673:KBDfans_KBD75_rev2" {
+    xkb_layout us(intl)
+    xkb_options caps:escape
 }
 input "type:touchpad" {
     events disabled_on_external_mouse
@@ -270,9 +260,19 @@ client.urgent           $red	$red 		$white 		$red 		$red
 # Disables switching windows on mouseover
 focus_follows_mouse no
 
-# Launch notification daemon
-exec mako
-
 include /etc/sway/config.d/*
 
+### Idle configuration
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 600 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+    timeout 300 'swaylock -f -i ~/Pictures/current_wallpaper' \
+    before-sleep 'swaylock -f -i ~/Pictures/current_wallpaper' \
+    lock 'swaylock -f -i ~/Pictures/current_wallpaper'
+
+exec swaymsg focus output 'Acer Technologies VG270U P 0x0000F7F4'
+# Launch notification daemon
+exec mako
+exec_always ./lid.sh
 exec "systemctl --user import-environment; systemctl --user start sway-session.target"
